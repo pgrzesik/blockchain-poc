@@ -13,7 +13,22 @@ blockchain = Blockchain()
 
 @app.route('/mine', methods=['GET'])
 def mine():
-    return 'Mine a new block!'
+    last_block = blockchain.last_block
+    last_proof = last_block['proof']
+    proof = blockchain.proof_of_work(last_proof)
+
+    blockchain.new_transaction(sender="0", recipient=node_id, amount=1)
+
+    block = blockchain.new_block(proof)
+
+    response = {
+        'message': 'New block mined!',
+        'index': block['index'],
+        'transactions': block['transaction'],
+        'proof': block['proof'],
+        'previous_hash': block['previous_hash']
+    }
+    return jsonify(response), 200
 
 
 @app.route('/transactions/new', methods=['POST'])
