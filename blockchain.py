@@ -47,3 +47,11 @@ class Blockchain:
         tested_hash = hashlib.sha256(
             f'{last_proof}{proof}'.encode()).hexdigest()
         return tested_hash[:4] == '0000'
+
+    def proof_of_work(self, last_proof):
+        proof = 0
+
+        while not self.valid_proof(last_proof, proof):
+            proof += 1
+
+        return proof
