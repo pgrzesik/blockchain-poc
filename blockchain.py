@@ -16,7 +16,7 @@ class Blockchain:
             'timestamp': time(),
             'transactions': self.current_transactions,
             'proof': proof,
-            'previous_hash': previous_hash or self.hash(self.chain[-1])
+            'previous_hash': previous_hash or self.hash(self.last_block)
         }
 
         self.current_transactions = []
@@ -40,4 +40,4 @@ class Blockchain:
 
     @property
     def last_block(self):
-        pass
+        return self.chain[-1]
