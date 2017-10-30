@@ -6,7 +6,7 @@ from blockchain import Blockchain
 
 app = Flask(__name__)
 
-node_id = str(uuid4()).replace()
+node_id = str(uuid4())
 
 blockchain = Blockchain()
 
