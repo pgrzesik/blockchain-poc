@@ -41,3 +41,9 @@ class Blockchain:
     @property
     def last_block(self):
         return self.chain[-1]
+
+    @staticmethod
+    def valid_proof(last_proof, proof):
+        tested_hash = hashlib.sha256(
+            f'{last_proof}{proof}'.encode()).hexdigest()
+        return tested_hash[:4] == '0000'
