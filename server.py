@@ -24,7 +24,7 @@ def mine():
     response = {
         'message': 'New block mined!',
         'index': block['index'],
-        'transactions': block['transaction'],
+        'transactions': block['transactions'],
         'proof': block['proof'],
         'previous_hash': block['previous_hash']
     }
